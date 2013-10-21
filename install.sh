@@ -9,6 +9,7 @@ echo "Created lib directories in /usr/local/lib/"
 echo "Copying lib files to /usr/local/lib/c/"
 cp ./c/Makefile /usr/local/lib/program_setup/c/
 cp ./c/.ycm_extra_conf.py /usr/local/lib/program_setup/c/
+cp ./c/_test.c /usr/local/lib/program_setup/c/
 echo "Copied lib files to /usr/local/lib/c/"
 
 echo "Copying executable files to /usr/local/bin"
