@@ -35,7 +35,7 @@ $(OBJECTDIR)%.o: $(SOURCEDIR)%.c
 	        $(CC) $(CFLAGS) -g $^ -o $@
 
 tests: $(TESTOBJECTS) $(OBJECTS) 
-	        $(CC) $(LDFLAGS) $^ ~/local/lib/libcunit.a -o $(EXECDIR)$@
+	        $(CC) $(LDFLAGS) $^ /usr/local/lib/libcunit.a -o $(EXECDIR)$@
 
 test: tests
 	        ./bin/tests

@@ -10,9 +10,37 @@ mkdir $1
 pushd .
 cd $1
 
+# Create directory structure
 mkdir bin/ obj/ src/ test/
 
+# Copy necessary files from /usr/local/lib/
 cp /usr/local/lib/program_setup/c/Makefile .
 cp /usr/local/lib/program_setup/c/.ycm_extra_conf.py .
 
+# Check that unit test library is installed. If not, install it
+if [ ! -f /usr/local/lib/libcunit.a ]; then
+	echo "Installing Unit Test Library (CUnit)"
+	wget -nc http://sourceforge.net/projects/cunit/files/latest/cunit.tar.bz2
+	tar -xf cunit.tar.bz2
+
+	pushd .
+	cd CUnit-2.1-2/
+
+	./configure
+	make
+	sudo make install
+
+	popd
+
+	rm cunit.tar.bz2
+	rm -rf CUnit-*
+	
+	echo "CUnit installed!"
+else
+	echo "CUnit already installed"
+fi
+
 popd
+
+echo "Your application is ready. Don't forget to set everything up in the
+Makefile"
