@@ -1,0 +1,18 @@
+if [ $# < 1 ]; then
+	echo "Needs at least 1 argument representing the program name"
+	exit 1
+fi
+
+# Create the root directory for the project
+mkdir $1
+
+#Enter the root directory for the project
+pushd .
+cd $1
+
+mkdir bin/ obj/ src/ test/
+
+cp /usr/local/lib/program_setup/c/Makefile .
+cp /usr/local/lib/program_setup/c/.ycm_extra_conf.py .
+
+popd
