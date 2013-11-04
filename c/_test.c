@@ -1,5 +1,5 @@
-#include "/Users/cjpoll/local/include/CUnit/CUnit.h"
-#include "/Users/cjpoll/local/include/CUnit/Basic.h"
+#include "/usr/local/include/CUnit/CUnit.h"
+#include "/usr/local/include/CUnit/Basic.h"
 // Don't forget to include your tested code up here!
 
 #include <stdio.h>
