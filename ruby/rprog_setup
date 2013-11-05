@@ -1,0 +1,21 @@
+if [ $# < 1 ]; then
+	echo "Needs at least 1 argument representing the program name"
+	exit 1
+fi
+
+# Create the root directory for the project
+mkdir -p $1
+
+#Enter the root directory for the project
+pushd .
+cd $1
+
+# Create directory structure
+mkdir -p spec
+
+# Copy necessary files from /usr/local/lib/
+cp /usr/local/lib/program_setup/ruby/Rakefile .
+cp /usr/local/lib/program_setup/ruby/_spec.rb ./spec/$1_spec.rb
+touch $1.rb
+
+popd
