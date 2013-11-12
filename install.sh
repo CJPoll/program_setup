@@ -20,6 +20,7 @@ echo "Copied lib files to /usr/local/lib/program_setup/ruby"
 
 echo "Copying lib files to /usr/local/lib/program_setup/erlang"
 cp ./erlang/Makefile /usr/local/lib/program_setup/erlang/
+cp ./erlang/rebar.config /usr/local/lib/program_setup/erlang/
 echo "Copied lib files to /usr/local/lib/program_setup/erlang"
 
 echo "Copying executable files to /usr/local/bin"

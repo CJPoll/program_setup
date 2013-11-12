@@ -27,15 +27,16 @@ fi
 APPNAME=$1
 
 mkdir $APPNAME
-pushd .
+pushd . # original dir
 cd $APPNAME
 
 mkdir apps
 mkdir deps
 mkdir rel
 cp /usr/local/lib/program_setup/erlang/Makefile .
+cp /usr/local/lib/program_setup/erlang/rebar.config .
 
-pushd .
+pushd . # Project root dir
 cd apps
 
 mkdir $APPNAME
@@ -44,10 +45,12 @@ cd $APPNAME
 rebar create-app appid=$APPNAME
 cd src
 touch $APPNAME.hrl
-popd
+popd # To project root dir
 
-pushd .
+pushd . # Project root dir
 cd rel
 
 rebar create-node appid=$APPNAME nodeid=$APPNAME
+sed -i 's/\(^\s*{lib_dirs, \[\)]},/\1\"..\/apps\", \"..\/deps\"]},/g' reltool.config
 popd
+
