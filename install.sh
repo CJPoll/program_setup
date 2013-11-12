@@ -4,6 +4,7 @@ echo "Creating lib directories in /usr/local/lib/"
 mkdir -p /usr/local/lib/program_setup/c/
 mkdir -p /usr/local/lib/program_setup/java/
 mkdir -p /usr/local/lib/program_setup/ruby/
+mkdir -p /usr/local/lib/program_setup/erlang/
 echo "Created lib directories in /usr/local/lib/"
 
 echo "Copying lib files to /usr/local/lib/c/"
@@ -17,9 +18,14 @@ cp ./ruby/Rakefile /usr/local/lib/program_setup/ruby/
 cp ./ruby/_spec.rb /usr/local/lib/program_setup/ruby/
 echo "Copied lib files to /usr/local/lib/program_setup/ruby"
 
+echo "Copying lib files to /usr/local/lib/program_setup/erlang"
+cp ./erlang/Makefile /usr/local/lib/program_setup/erlang/
+echo "Copied lib files to /usr/local/lib/program_setup/erlang"
+
 echo "Copying executable files to /usr/local/bin"
 cp ./c/cprog_setup /usr/local/bin/
 cp ./ruby/rprog_setup /usr/local/bin/
+cp ./erlang/erlprog_setup /usr/local/bin/
 
 echo "Unit test libraries are checked when setting up an application"
 
