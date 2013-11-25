@@ -12,10 +12,11 @@ cd $1
 
 # Create directory structure
 mkdir -p spec
+mkdir -p src
 
 # Copy necessary files from /usr/local/lib/
 cp /usr/local/lib/program_setup/ruby/Rakefile .
 cp /usr/local/lib/program_setup/ruby/_spec.rb ./spec/$1_spec.rb
-touch $1.rb
+touch src/$1.rb
 
 popd
