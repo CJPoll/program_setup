@@ -25,6 +25,9 @@ clean: $(REBAR)
 	rebar clean
 	make -C rel/funny clean
 
+eunit: compile
+	rebar skip-deps=true eunit
+
 distclean: $(REBAR) 
 	rebar delete-deps
 
