@@ -28,6 +28,11 @@ clean: $(REBAR)
 eunit: compile
 	rebar skip-deps=true eunit
 
+ct: compile
+	rebar skip-deps=true ct
+
+test: eunit ct
+
 distclean: $(REBAR) 
 	rebar delete-deps
 
