@@ -23,10 +23,15 @@ cp ./erlang/Makefile /usr/local/lib/program_setup/erlang/
 cp ./erlang/rebar.config /usr/local/lib/program_setup/erlang/
 echo "Copied lib files to /usr/local/lib/program_setup/erlang"
 
+echo "Copying lib files to /usr/local/lib/program_setup/erlang"
+cp ./java/.syntastic_javac_config /usr/local/lib/program_setup/java/
+cp ./java/Makefile /usr/local/lib/program_setup/java/
+
 echo "Copying executable files to /usr/local/bin"
 cp ./c/cprog_setup /usr/local/bin/
 cp ./ruby/rprog_setup /usr/local/bin/
 cp ./erlang/erlprog_setup /usr/local/bin/
+cp ./java/jprog_setup /usr/local/bin/
 
 echo "Unit test libraries are checked when setting up an application"
 
