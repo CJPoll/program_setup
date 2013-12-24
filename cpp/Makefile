@@ -14,21 +14,25 @@ EXECUTABLE = test_app
 
 # Sources and Test sources should only be filenames and not include directory
 # paths.
-SOURCES = test_app.cpp
+MAIN = main.cpp
+SOURCES = 
 TESTSRCS = test_app_tests.cpp
 
 OBJECTFILES = $(SOURCES:.cpp=.o)
-	OBJECTS = $(foreach OBJECT, $(OBJECTFILES), $(OBJECTDIR)$(OBJECT));
+OBJECTS = $(foreach OBJECT, $(OBJECTFILES), $(OBJECTDIR)$(OBJECT));
 
 TESTOBJFILES = $(TESTSRCS:.cpp=.o)
-	TESTOBJECTS = $(foreach TESTOBJECT, $(TESTOBJFILES), $(TESTDIR$)$(TESTOBJECT))
+TESTOBJECTS = $(foreach TESTOBJECT, $(TESTOBJFILES), $(OBJECTDIR)$(TESTOBJECT))
+
+MAINOBJFILE = $(MAIN:.cpp=.o)
+MAINOBJ = $(OBJECTDIR)$(MAINOBJFILE)
 
 .PHONY : clean
 
-all: $(OBJECTS)
+all: $(MAINOBJ) $(OBJECTS) 
 	$(CC) $(LDFLAGS) $^ -o $(EXECDIR)$(EXECUTABLE)
 
-$(TESTDIR)%.o: $(TESTDIR)%.cpp
+$(OBJECTDIR)%.o: $(TESTDIR)%.cpp
 	$(CC) $(CFLAGS) -I ./gtest-1.7.0/include -g $^ -o $@
 
 $(OBJECTDIR)%.o: $(SOURCEDIR)%.cpp
@@ -39,6 +43,9 @@ tests: $(TESTOBJECTS) $(OBJECTS)
 
 test: tests
 	./bin/tests
+
+run: all
+	./bin/$(EXECUTABLE)
 
 clean:
 	-rm ./bin/* ./obj/* ./test/*.o
