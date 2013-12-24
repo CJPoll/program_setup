@@ -17,6 +17,7 @@ mkdir -p bin/ obj/ src/ test/
 cp /usr/local/lib/program_setup/cpp/Makefile .
 cp /usr/local/lib/program_setup/cpp/.ycm_extra_conf.py .
 cp /usr/local/lib/program_setup/cpp/_tests.cpp ./test/$1_tests.cpp
+cp /usr/local/lib/program_setup/cpp/main.cpp ./src
 
 # Install Unit Test Library
 wget https://googletest.googlecode.com/files/gtest-1.7.0.zip
