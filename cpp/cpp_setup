@@ -1,0 +1,31 @@
+if [ $# < 1 ]; then
+	echo "Needs at least 1 argument representing the program name"
+	exit 1
+fi
+
+# Create the root directory for the project
+mkdir -p $1
+
+#Enter the root directory for the project
+pushd .
+cd $1
+
+# Create directory structure
+mkdir -p bin/ obj/ src/ test/
+
+# Copy necessary files from /usr/local/lib/
+cp /usr/local/lib/program_setup/cpp/Makefile .
+cp /usr/local/lib/program_setup/cpp/.ycm_extra_conf.py .
+
+# Install Unit Test Library
+wget https://googletest.googlecode.com/files/gtest-1.7.0.zip
+unzip gtest-1.7.0.zip
+pushd .
+cd gtest-1.7.0
+./configure && make
+popd
+
+popd
+
+echo "Your application is ready. Don't forget to set everything up in the
+Makefile"
