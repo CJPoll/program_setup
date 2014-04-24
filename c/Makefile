@@ -10,12 +10,13 @@ EXECDIR = ./bin/
 TESTDIR = ./test/
 
 # If there is a final executable, what is it's name?
-EXECUTABLE = executable_name
+EXECUTABLE = exec
 
 # Sources and Test sources should only be filenames and not include directory
 # paths.
-SOURCES = sources.c
-TESTSRCS = sources._test.c
+MAIN = main.c
+SOURCES = source.c
+TESTSRCS = source_test.c
 
 OBJECTFILES = $(SOURCES:.c=.o)
 	OBJECTS = $(foreach OBJECT, $(OBJECTFILES), $(OBJECTDIR)$(OBJECT));
@@ -23,10 +24,16 @@ OBJECTFILES = $(SOURCES:.c=.o)
 TESTOBJFILES = $(TESTSRCS:.c=.o)
 	TESTOBJECTS = $(foreach TESTOBJECT, $(TESTOBJFILES), $(TESTDIR$)$(TESTOBJECT))
 
+MAINOBJFILE = $(MAIN:.c=.o)
+MAINOBJ = $(OBJECTDIR)$(MAINOBJFILE)
+
 .PHONY : clean
 
-all: $(OBJECTS)
-	        echo $(TESTOBJECTS)
+all: $(MAINOBJ) $(OBJECTS)
+	$(CC) $(LDFLAGS) $^ -o $(EXECDIR)$(EXECUTABLE)
+
+$(EXECUTABLE) : $(OBJECTS)
+	    $(CC) $(LDFLAGS)  $^ -o $(EXECDIR)$(EXECUTABLE)
 
 $(TESTDIR)%.o: $(TESTDIR)%.c
 	        $(CC) $(CFLAGS) -g $^ -o $@
