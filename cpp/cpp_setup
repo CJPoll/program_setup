@@ -1,33 +1,29 @@
+#! /usr/bin/env bash
 if [ $# < 1 ]; then
-	echo "Needs at least 1 argument representing the program name"
-	exit 1
+	echo "Needs at least 1 argument representing the program name";
+	exit 1;
 fi
 
 # Create the root directory for the project
-mkdir -p $1
+mkdir -p $1;
 
 #Enter the root directory for the project
-pushd .
-cd $1
+pushd .;
+cd $1;
 
 # Create directory structure
-mkdir -p bin/ obj/ src/ test/
+mkdir -p bin/ obj/main/ src/main/ test/;
 
 # Copy necessary files from /usr/local/lib/
-cp /usr/local/lib/program_setup/cpp/Makefile .
-cp /usr/local/lib/program_setup/cpp/.ycm_extra_conf.py .
-cp /usr/local/lib/program_setup/cpp/_tests.cpp ./test/$1_tests.cpp
-cp /usr/local/lib/program_setup/cpp/main.cpp ./src
+cp /usr/local/lib/program_setup/cpp/Makefile .;
+cp /usr/local/lib/program_setup/cpp/.ycm_extra_conf.py .;
+cp /usr/local/lib/program_setup/cpp/_tests.cpp "./test/${1}_tests.cpp";
+cp /usr/local/lib/program_setup/cpp/main.cpp ./src/main/;
 
 # Install Unit Test Library
-wget https://googletest.googlecode.com/files/gtest-1.7.0.zip
-unzip gtest-1.7.0.zip
-pushd .
-cd gtest-1.7.0
-./configure && make
-popd
+CATCH_URL="https://raw.github.com/philsquared/Catch/master/single_include/catch.hpp";
+wget $CATCH_URL -O "test/catch.hpp";
 
-popd
+popd;
 
-echo "Your application is ready. Don't forget to set everything up in the
-Makefile"
+echo "Your application is ready";
