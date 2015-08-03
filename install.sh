@@ -19,6 +19,7 @@ cp ./cpp/Makefile /usr/local/lib/program_setup/cpp/
 cp ./cpp/.ycm_extra_conf.py /usr/local/lib/program_setup/cpp/
 cp ./cpp/_tests.cpp /usr/local/lib/program_setup/cpp/
 cp ./cpp/main.cpp /usr/local/lib/program_setup/cpp/
+cp ./cpp/.gitignore /usr/local/lib/program_setup/cpp/
 echo "Copied lib files to /usr/local/lib/cpp/"
 
 echo "Copying lib files to /usr/local/lib/program_setup/ruby"
