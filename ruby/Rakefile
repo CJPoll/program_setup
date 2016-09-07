@@ -1,13 +1,8 @@
-require('rspec/core/rake_task')
+require 'rake/testtask'
 
-#RSpec::Core::RakeTask.new(:spec)
-
-task :run do
-	ruby %{-I ./src src/main.rb}
-end
-
-task :test do
-	puts `rspec -I ./src`
+Rake::TestTask.new do |t|
+  t.libs << 'test'
+  t.pattern = 'test/*_test.rb'
 end
 
 task :default => :run

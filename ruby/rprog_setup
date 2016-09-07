@@ -4,19 +4,21 @@ if [ $# < 1 ]; then
 fi
 
 # Create the root directory for the project
-mkdir -p $1
+mkdir -p ${1}
 
 #Enter the root directory for the project
-pushd .
-cd $1
+pushd ${1}
 
 # Create directory structure
-mkdir -p spec
-mkdir -p src
+mkdir -p test
+mkdir -p lib
 
 # Copy necessary files from /usr/local/lib/
+gem install bundler
+bundle init
+cp /usr/local/lib/program_setup/ruby/minitest_helper.rb test/
 cp /usr/local/lib/program_setup/ruby/Rakefile .
-cp /usr/local/lib/program_setup/ruby/_spec.rb ./spec/$1_spec.rb
-touch src/$1.rb
+touch lib/$1.rb
+echo "require 'minitest_helper'" > test/${1}_test.rb
 
 popd

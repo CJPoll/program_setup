@@ -24,7 +24,7 @@ echo "Copied lib files to /usr/local/lib/cpp/"
 
 echo "Copying lib files to /usr/local/lib/program_setup/ruby"
 cp ./ruby/Rakefile /usr/local/lib/program_setup/ruby/
-cp ./ruby/_spec.rb /usr/local/lib/program_setup/ruby/
+cp ./ruby/minitest_helper.rb /usr/local/lib/program_setup/ruby/
 echo "Copied lib files to /usr/local/lib/program_setup/ruby"
 
 echo "Copying lib files to /usr/local/lib/program_setup/erlang"
